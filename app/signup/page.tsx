@@ -3,7 +3,7 @@ import Link from "next/link";
 import SignupBtn from '../components/button/SignupBtn';
 
 
-const page = () => {
+const SignupPage = () => {
   return (
     <div className="container flex items-center justify-center min-h-screen">
       <div className="card bg-base-100 w-96 shadow-xl">
@@ -64,4 +64,4 @@ const page = () => {
   )
 }
 
-export default page
+export default SignupPage;
