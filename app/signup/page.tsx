@@ -56,7 +56,7 @@ const page = () => {
           </div>
 
           <div className="text-center mt-4">
-            Already have an account ? <Link href={"/"}>Signin</Link>
+            Already have an account ? <Link href={"/"}><b>Signin</b></Link>
           </div>
         </div>
       </div>

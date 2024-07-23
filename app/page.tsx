@@ -41,7 +41,7 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-4">
-            Don't have any account ? <Link href={"/signup"}>Signup</Link>
+            Don't have any account ? <Link href={"/signup"}><b>Signup</b></Link>
           </div>
         </div>
       </div>
