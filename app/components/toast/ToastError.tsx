@@ -1,6 +1,7 @@
+'use client';
 import React from 'react'
 
-const toats_error = () => {
+const ToastError = () => {
   return (
     <div className="toast toast-end">
         <div className="alert alert-error">
@@ -10,4 +11,4 @@ const toats_error = () => {
   )
 }
 
-export default toats_error
+export default ToastError

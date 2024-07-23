@@ -1,6 +1,7 @@
+'use client';
 import React from 'react'
 
-const toast_success = () => {
+const ToastSuccess = () => {
   return (
     <div className="toast toast-end">
         <div className="alert alert-success">
@@ -10,4 +11,4 @@ const toast_success = () => {
   )
 }
 
-export default toast_success
+export default ToastSuccess

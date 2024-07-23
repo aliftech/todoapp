@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from "next/link";
+import SignupBtn from '../components/button/SignupBtn';
 
 
 const page = () => {
@@ -51,7 +52,7 @@ const page = () => {
           </label>
 
           <div className="justify-center mt-4">
-            <button className="btn btn-block btn-outline btn-primary">Signin</button>
+            <SignupBtn/ >
           </div>
 
           <div className="text-center mt-4">
