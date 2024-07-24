@@ -1,7 +1,7 @@
 'use client';
 import React from 'react'
 
-const SigninBtn = () => {
+const SigninForm = () => {
   return (
     <div>
       <button className="btn btn-block btn-outline btn-primary shadow-lg shadow-blue-500/50">Signin</button>
@@ -9,4 +9,4 @@ const SigninBtn = () => {
   )
 }
 
-export default SigninBtn
+export default SigninForm

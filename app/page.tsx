@@ -1,5 +1,5 @@
 import Link from "next/link";
-import SigninBtn from "./components/button/SigninBtn";
+import SigninForm from "./components/forms/SigninForm";
 
 export default function Home() {
   return (
@@ -37,7 +37,7 @@ export default function Home() {
           </label>
 
           <div className="justify-center mt-4">
-            <SigninBtn />
+            <SigninForm />
           </div>
 
           <div className="text-center mt-4">
