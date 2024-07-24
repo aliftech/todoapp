@@ -4,7 +4,7 @@ import React from 'react'
 const SignupBtn = () => {
   return (
     <div>
-        <button className="btn btn-block btn-outline btn-primary">Signup</button>
+        <button className="btn btn-block btn-outline btn-primary shadow-lg shadow-blue-500/50">Signup</button>
     </div>
   )
 }
