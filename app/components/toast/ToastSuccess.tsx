@@ -1,11 +1,15 @@
 'use client';
-import React from 'react'
+import React from 'react';
 
-const ToastSuccess = () => {
+interface ToastSuccessProps {
+  value: string;
+}
+
+const ToastSuccess: React.FC<ToastSuccessProps> = ({value}) => {
   return (
-    <div className="toast toast-end">
+    <div className="toast toast-top toast-end">
         <div className="alert alert-success">
-            <span>Message sent successfully.</span>
+        <span>{value}</span>
         </div>
     </div>
   )

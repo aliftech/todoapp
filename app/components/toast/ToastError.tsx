@@ -1,14 +1,18 @@
 'use client';
-import React from 'react'
+import React from 'react';
 
-const ToastError = () => {
-  return (
-    <div className="toast toast-end">
-        <div className="alert alert-error">
-            <span>Oops! Something wrong. Please try againt.</span>
-        </div>
-    </div>
-  )
+interface ToastErrorProps {
+  value: string;
 }
 
-export default ToastError
+const ToastError: React.FC<ToastErrorProps> = ({ value }) => {
+  return (
+    <div className="toast toast-top toast-end">
+      <div className="alert alert-error">
+        <span>{value}</span>
+      </div>
+    </div>
+  );
+}
+
+export default ToastError;
