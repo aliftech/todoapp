@@ -4,7 +4,7 @@ import React from 'react'
 const TaskModal = () => {
   return (
     <>
-    <button className="btn btn-outline btn-info" onClick={() => document.getElementById('taskModel').showModal()}>New Task</button>
+    <button className="btn btn-outline btn-info shadow-lg shadow-cyan-500/50" onClick={() => document.getElementById('taskModel').showModal()}>New Task</button>
     <dialog id="taskModel" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <h3 className="font-bold text-lg mb-4">New Task</h3>

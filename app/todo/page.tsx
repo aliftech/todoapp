@@ -23,14 +23,15 @@ const AccordionPage: React.FC = () => {
                 />
               </svg>
             </label>
-      <TaskModal />
+      
+            <TaskModal />
             
           </div>
         </div>
       </div>
 
       <div className="card bg-neutral text-neutral-content w-full max-w-md mx-4">
-        <div className="card-body items-center text-center">
+        <div className="card-body items-center">
           <h2 className="card-title">Task List</h2>
           <div className="w-full">
             <TaskAccordeon
