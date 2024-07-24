@@ -1,6 +1,8 @@
 import React from 'react';
+import TaskAccordeon from '../components/accordeon/TaskAccordeon'; // Adjust the import path as necessary
+import TaskModal from '../components/modal/TaskModal';
 
-const TodoPage = () => {
+const AccordionPage: React.FC = () => {
   return (
     <div className="container flex flex-col items-center justify-center min-h-screen gap-4">
       <div className="card bg-neutral text-neutral-content w-full max-w-md mx-4">
@@ -21,49 +23,42 @@ const TodoPage = () => {
                 />
               </svg>
             </label>
-            <button className="btn btn-outline btn-info">New Task</button>
+      <TaskModal />
+            
           </div>
         </div>
       </div>
 
-      <div className="card bg-neutral text-neutral-content w-full max-w-md mx-4 mt-2">
-        <div className="card-body">
-          <h2 className="card-title">Tasks</h2>
-          <ul className="list-none w-full">
-            <li className="flex items-center justify-between py-2">
-              <label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  defaultChecked
-                  className="checkbox checkbox-info"
-                />
-                <span>Task 1</span>
-              </label>
-            </li>
-            <li className="flex items-center justify-between py-2">
-              <label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  defaultChecked
-                  className="checkbox checkbox-info"
-                />
-                <span>Task 2</span>
-              </label>
-            </li>
-            <li className="flex items-center justify-between py-2">
-              <label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  className="checkbox checkbox-info"
-                />
-                <span>Task 3</span>
-              </label>
-            </li>
-          </ul>
+      <div className="card bg-neutral text-neutral-content w-full max-w-md mx-4">
+        <div className="card-body items-center text-center">
+          <h2 className="card-title">Task List</h2>
+          <div className="w-full">
+            <TaskAccordeon
+              title="Task 1"
+              content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque enim perferendis adipisci minima, tenetur dolor veritatis odio optio quidem totam perspiciatis. Doloribus, quod. Accusantium quisquam, veritatis vitae minima nemo porro."
+              name="my-accordion-3"
+              isChecked={false}
+              isDone={false}
+            />
+            <TaskAccordeon
+              title="Task 2"
+              content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque enim perferendis adipisci minima, tenetur dolor veritatis odio optio quidem totam perspiciatis. Doloribus, quod. Accusantium quisquam, veritatis vitae minima nemo porro."
+              name="my-accordion-3"
+              isChecked={false}
+              isDone={true}
+            />
+            <TaskAccordeon
+              title="Task 3"
+              content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque enim perferendis adipisci minima, tenetur dolor veritatis odio optio quidem totam perspiciatis. Doloribus, quod. Accusantium quisquam, veritatis vitae minima nemo porro."
+              name="my-accordion-3"
+              isChecked={false}
+              isDone={false}
+            />
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default TodoPage;
+export default AccordionPage;
