@@ -26,8 +26,8 @@ Make sure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/aliftech/jin.git
-   cd jin
+   https://github.com/aliftech/todoapp.git
+   cd todoapp
    ```
 
 2. Install dependencies:
