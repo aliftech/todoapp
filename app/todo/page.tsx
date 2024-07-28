@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import TaskAccordeon from '../components/accordeon/TaskAccordeon'; // Adjust the import path as necessary
 import TaskModal from '../components/modal/TaskModal';
 import { redirect } from 'next/navigation';
@@ -25,39 +25,40 @@ interface ApiResponse {
 const AccordionPage: React.FC = () => {
   const [tasks, setTasks] = useState<TaskInterface[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchInput, setSearchInput] = useState('');
+
+  const fetchTasks = useCallback(async (token: string) => {
+    try {
+      const response = await fetch('http://localhost:3000/task', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      const result: ApiResponse = await response.json();
+
+      if (!result.error) {
+        setTasks(result.data);
+      } else {
+        console.error(result.message);
+      }
+    } catch (error) {
+      console.error('Failed to fetch tasks:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    const fetchTasks = async (token: string) => {
-      try {
-        const response = await fetch('http://localhost:3000/task', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-        });
-
-        const result: ApiResponse = await response.json();
-
-        if (!result.error) {
-          setTasks(result.data);
-        } else {
-          console.error(result.message);
-        }
-      } catch (error) {
-        console.error('Failed to fetch tasks:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     const access_token = localStorage.getItem("access_token");
     if (access_token) {
       fetchTasks(access_token);
     } else {
       redirect('/');
     }
-  }, []);
+  }, [fetchTasks]);
 
   const handleTaskDelete = async (taskId: number) => {
     try {
@@ -80,6 +81,10 @@ const AccordionPage: React.FC = () => {
     }
   };
 
+  const filteredTasks = tasks.filter(task =>
+    task.Title.toLowerCase().includes(searchInput.toLowerCase())
+  );
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -90,7 +95,13 @@ const AccordionPage: React.FC = () => {
         <div className="card-body items-center text-center">
           <div className="join">
             <label className="input input-bordered flex items-center gap-2">
-              <input type="text" className="grow" placeholder="Search" />
+              <input
+                type="text"
+                className="grow"
+                placeholder="Search"
+                value={searchInput}
+                onChange={e => setSearchInput(e.target.value)}
+              />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
@@ -104,7 +115,7 @@ const AccordionPage: React.FC = () => {
                 />
               </svg>
             </label>
-            <TaskModal />
+            <TaskModal onFetch={() => fetchTasks(localStorage.getItem("access_token")!)} />
           </div>
         </div>
       </div>
@@ -113,7 +124,7 @@ const AccordionPage: React.FC = () => {
         <div className="card-body items-center">
           <h2 className="card-title">Task List</h2>
           <div className="w-full">
-            {tasks.map((task) => (
+            {filteredTasks.map((task) => (
               <TaskAccordeon
                 key={task.ID}
                 id={task.ID}

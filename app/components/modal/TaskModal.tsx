@@ -9,7 +9,11 @@ interface TaskStatus {
   message: string;
 }
 
-const TaskModal = () => {
+interface TaskFetch {
+  onFetch: () => void
+}
+
+const TaskModal: React.FC<TaskFetch> = ({ onFetch }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [due, setDue] = useState('');
@@ -57,6 +61,7 @@ const TaskModal = () => {
         setShowSuccess(false);
         setMessage('');
       }, 3000);
+      onFetch();  // Call onFetch after a successful task creation
     }
     setTitle('');
     setDescription('');
