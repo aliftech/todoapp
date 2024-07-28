@@ -1,12 +1,17 @@
 'use client';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ToastError from '../toast/ToastError';
 import ToastSuccess from '../toast/ToastSuccess';
+import { redirect } from 'next/navigation';
 
 interface SigninStatus {
   success: boolean;
   error?: boolean;
   message: string;
+  data?: {
+    access_token: string;
+    refresh_token: string;
+  };
 }
 
 const SigninForm = () => {
@@ -16,15 +21,18 @@ const SigninForm = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [message, setMessage] = useState('');
 
+  const access_token = localStorage.getItem('access_token');
+  if (access_token) redirect('/todo');
+
   const SigninProcess = async (): Promise<SigninStatus> => {
     const response = await fetch('http://localhost:3000/login', {
-      method: 'post',
+      method: 'POST',
       body: JSON.stringify({
         email: email,
-        password: password
+        password: password,
       }),
       headers: {
-        'Content-type': 'application/json',
+        'Content-Type': 'application/json',
       },
     });
 
@@ -50,14 +58,17 @@ const SigninForm = () => {
       setShowError(false);
       setShowSuccess(true);
       setMessage(response.message);
+      localStorage.setItem('access_token', response.data?.access_token || '');
+      localStorage.setItem('refresh_token', response.data?.refresh_token || '');
       setEmail('');
       setPassword('');
       setTimeout(() => {
         setMessage('');
         setShowSuccess(false);
+        redirect('/todo'); // Redirect to dashboard or any desired route
       }, 3000);
     }
-  }
+  };
 
   return (
     <div>
@@ -73,31 +84,48 @@ const SigninForm = () => {
             <path
               d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
           </svg>
-          <input type="text" className="grow" placeholder="Email" value={email} onChange={(e) => setEmail(e.target. value)} />
+          <input
+            type="text"
+            className="grow"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </label>
 
         <label className="input input-bordered flex items-center gap-2">
           <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 16 16"
-          fill="currentColor"
-          className="h-4 w-4 opacity-70">
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            className="h-4 w-4 opacity-70">
             <path
               fillRule="evenodd"
-              d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+              d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 1 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
               clipRule="evenodd" />
           </svg>
-          <input type="password" className="grow" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input
+            type="password"
+            className="grow"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </label>
 
         <div className="justify-center mt-4">
-          <button className="btn btn-block btn-outline btn-primary shadow-lg shadow-blue-500/50" onClick={HandleSignin}>Signin</button>
+          <button
+            className="btn btn-block btn-outline btn-primary shadow-lg shadow-blue-500/50"
+            onClick={HandleSignin}
+          >
+            Signin
+          </button>
         </div>
       </form>
       {showError && <ToastError value={message} />}
       {showSuccess && <ToastSuccess value={message} />}
     </div>
-  )
-}
+  );
+};
 
-export default SigninForm
+export default SigninForm;

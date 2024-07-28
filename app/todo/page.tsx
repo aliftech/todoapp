@@ -1,8 +1,13 @@
+"use client";
 import React from 'react';
 import TaskAccordeon from '../components/accordeon/TaskAccordeon'; // Adjust the import path as necessary
 import TaskModal from '../components/modal/TaskModal';
+import { redirect } from 'next/navigation';
 
 const AccordionPage: React.FC = () => {
+  const access_token = localStorage.getItem("access_token");
+  if (!access_token) redirect('/');
+    
   return (
     <div className="container flex flex-col items-center justify-center min-h-screen gap-4">
       <div className="card bg-neutral text-neutral-content w-full max-w-md mx-4">
