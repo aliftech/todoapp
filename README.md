@@ -1,8 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TodoApp
+
+TodoApp is a simple yet powerful web application that allows you to keep track of your tasks. With an intuitive interface and essential features, you can easily manage your to-do list and stay organized. This project is only the frontend part of the fully TodoApp. The backend project can be accessed in this [Repository](https://github.com/aliftech/todo-api).
+
+## Features
+
+- **Add Tasks**: Quickly add new tasks to your to-do list.
+- **Edit Tasks**: Modify existing tasks to keep them up-to-date.
+- **Delete Tasks**: Remove tasks that are no longer needed.
+- **Filter Tasks**: Easily search and filter tasks based on your criteria.
+- **Responsive Design**: Accessible and user-friendly on all devices.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js (version 14 or later)
+- npm, yarn, pnpm, or bun (package managers)
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/aliftech/jin.git
+   cd jin
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   # or
+   bun install
+   ```
+
+### Running the Development Server
+
+Start the development server:
 
 ```bash
 npm run dev
@@ -14,23 +54,46 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and navigate to http://localhost:3000 to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To create a production build, run:
 
-## Learn More
+```bash
+npm run build
+# or
+yarn build
+# or
+pnpm build
+# or
+bun build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deploy the production build to your preferred hosting service. For example, you can use Vercel, Netlify, or any static site hosting provider.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+We welcome contributions! Please follow these steps to contribute:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Fork the repository.
+2. Create a new branch with a descriptive name.
+3. Make your changes and commit them with clear messages.
+4. Push your changes to your fork.
+5. Submit a pull request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Acknowledgements
+
+- [React](https://react.dev/)
+- [Node.js](https://nodejs.org/en)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+## Contact
+
+For questions or feedback, please reach out to Wahyu Krisna Aji at wahyukrisnaaji32@gmail.com.
