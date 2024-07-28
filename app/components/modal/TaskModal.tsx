@@ -19,6 +19,7 @@ const TaskModal = () => {
   const [message, setMessage] = useState('');
 
   const CreateTask = async (): Promise<TaskStatus> => {
+    const access_token = localStorage.getItem("access_token");
     const response = await fetch('http://localhost:3000/task', {
       method: 'POST',
       body: JSON.stringify({
@@ -29,6 +30,7 @@ const TaskModal = () => {
       }),
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${access_token}`,
       },
     });
 
