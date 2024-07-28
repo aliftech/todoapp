@@ -54,7 +54,7 @@ pnpm dev
 bun dev
 ```
 
-Open your browser and navigate to http://localhost:3000 to see the application.
+Open your browser and navigate to http://localhost:8000 to see the application.
 
 ## Building for Production
 
