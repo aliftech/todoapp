@@ -2,6 +2,8 @@
 
 TodoApp is a simple yet powerful web application that allows you to keep track of your tasks. With an intuitive interface and essential features, you can easily manage your to-do list and stay organized. This project is only the frontend part of the fully TodoApp. The backend project can be accessed in this [Repository](https://github.com/aliftech/todo-api).
 
+![Screenshot_50](https://github.com/user-attachments/assets/ba2ad216-93d9-466e-9434-c0b70ef79919)
+
 ## Features
 
 - **Add Tasks**: Quickly add new tasks to your to-do list.
